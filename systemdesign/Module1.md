@@ -671,4 +671,459 @@ System Design
 
 **Good system design means choosing the right structure and trade-offs to solve business problems under real-world constraints.** 
 
-I can turn this into a **downloadable MD, PDF, or PPT with proper images and diagrams**.
+# 📘 System Design Terms – Knowledge Check (MCQ + Subjective with Answers)
+
+---
+
+# 🧠 MCQs (Professional & Balanced)
+
+## 🔹 Section 1: Core Concepts
+
+1. System design primarily focuses on:  
+A. Writing functions  
+B. UI design  
+C. Structuring large-scale systems  
+D. Debugging code  
+
+2. Functional requirements define:  
+A. Performance  
+B. Features  
+C. Latency  
+D. Security  
+
+3. Non-functional requirements include:  
+A. Login  
+B. Signup  
+C. Response time  
+D. CRUD operations  
+
+4. Which is a constraint?  
+A. Send message  
+B. Low budget  
+C. Login feature  
+D. UI design  
+
+5. Assumptions are used when:  
+A. Requirements are clear  
+B. Data is available  
+C. Information is missing  
+D. System is deployed  
+
+6. Trade-offs involve:  
+A. Perfect design  
+B. No compromise  
+C. Balancing decisions  
+D. Ignoring constraints  
+
+7. Scalability ensures:  
+A. Better UI  
+B. More features  
+C. Handling growth  
+D. Faster coding  
+
+8. Availability means:  
+A. Correct output  
+B. System uptime  
+C. UI response  
+D. Data storage  
+
+9. Reliability ensures:  
+A. Speed  
+B. Accuracy over time  
+C. UI quality  
+D. Deployment  
+
+10. Latency measures:  
+A. Throughput  
+B. Speed of response  
+C. Data size  
+D. CPU usage  
+
+---
+
+## 🔹 Section 2: Performance & Scaling
+
+11. Throughput refers to:  
+A. Speed of one request  
+B. Number of requests handled  
+C. Data storage  
+D. UI rendering  
+
+12. Load balancer helps:  
+A. Store data  
+B. Distribute traffic  
+C. Improve UI  
+D. Cache data  
+
+13. Cache improves:  
+A. Storage  
+B. Security  
+C. Speed  
+D. UI  
+
+14. Queue is used for:  
+A. UI  
+B. Background processing  
+C. Storage  
+D. Styling  
+
+15. Asynchronous processing:  
+A. Blocks user  
+B. Runs instantly  
+C. Runs in background  
+D. Deletes data  
+
+16. Replication is used for:  
+A. UI  
+B. Backup & availability  
+C. CSS  
+D. Routing  
+
+17. Sharding helps in:  
+A. UI design  
+B. Splitting data  
+C. Styling  
+D. Caching  
+
+18. Consistency ensures:  
+A. Speed  
+B. Correct data  
+C. UI  
+D. Deployment  
+
+19. Fault tolerance means:  
+A. No failure  
+B. System survives failure  
+C. UI  
+D. CSS  
+
+20. SPOF refers to:  
+A. Multiple servers  
+B. Backup  
+C. Single failure point  
+D. Load balancer  
+
+---
+
+## 🔹 Section 3: Advanced Concepts
+
+21. Idempotency ensures:  
+A. Duplicate effects  
+B. Same result on retries  
+C. UI  
+D. Storage  
+
+22. API acts as:  
+A. DB  
+B. UI  
+C. Communication layer  
+D. Cache  
+
+23. Monitoring helps:  
+A. Ignore issues  
+B. Detect issues  
+C. UI  
+D. CSS  
+
+24. Rate limiting prevents:  
+A. Speed  
+B. Abuse  
+C. UI  
+D. DB  
+
+25. Which improves latency?  
+A. Cache  
+B. UI  
+C. CSS  
+D. HTML  
+
+26. Which improves availability?  
+A. Replication  
+B. UI  
+C. CSS  
+D. HTML  
+
+27. Which improves throughput?  
+A. Scaling  
+B. UI  
+C. CSS  
+D. HTML  
+
+28. Queue helps:  
+A. UI  
+B. Async work  
+C. Styling  
+D. Layout  
+
+29. Trade-off example:  
+A. Speed vs cost  
+B. UI vs CSS  
+C. HTML vs JS  
+D. Color vs font  
+
+30. Constraint example:  
+A. Login  
+B. Budget limit  
+C. UI  
+D. Button  
+
+---
+
+## 🔹 Section 4: Scenario-Based
+
+31. App crashes when DB fails. Issue?  
+A. Cache  
+B. SPOF  
+C. UI  
+D. CSS  
+
+32. System handles more users by adding servers:  
+A. Sharding  
+B. Replication  
+C. Horizontal scaling  
+D. Cache  
+
+33. Slow DB queries solved by:  
+A. Cache  
+B. UI  
+C. CSS  
+D. HTML  
+
+34. Duplicate payment prevention uses:  
+A. Retry  
+B. Idempotency  
+C. Cache  
+D. UI  
+
+35. Sending emails later uses:  
+A. Queue  
+B. DB  
+C. UI  
+D. CSS  
+
+36. System downtime reduced by:  
+A. Replication  
+B. UI  
+C. CSS  
+D. HTML  
+
+37. API overload handled by:  
+A. Rate limiting  
+B. Cache  
+C. UI  
+D. CSS  
+
+38. Data split across DBs:  
+A. Replication  
+B. Sharding  
+C. Cache  
+D. UI  
+
+39. High latency reduced by:  
+A. Cache  
+B. UI  
+C. CSS  
+D. HTML  
+
+40. System monitoring tracks:  
+A. UI  
+B. Metrics  
+C. CSS  
+D. HTML  
+
+---
+
+## 🔹 Section 5: Mixed
+
+41. Functional requirement example:  
+A. Login  
+B. Latency  
+C. Availability  
+D. Throughput  
+
+42. Non-functional example:  
+A. Signup  
+B. Latency  
+C. Order  
+D. Chat  
+
+43. External system example:  
+A. DB  
+B. API  
+C. Payment gateway  
+D. Cache  
+
+44. Internal system example:  
+A. Stripe  
+B. Maps  
+C. Auth service  
+D. SMS  
+
+45. Load balancer prevents:  
+A. UI  
+B. Overload  
+C. CSS  
+D. HTML  
+
+46. Cache reduces:  
+A. DB load  
+B. UI  
+C. CSS  
+D. HTML  
+
+47. Queue improves:  
+A. UI  
+B. User wait time  
+C. CSS  
+D. HTML  
+
+48. Reliability ensures:  
+A. Speed  
+B. Correctness  
+C. UI  
+D. CSS  
+
+49. Latency is:  
+A. Count  
+B. Time  
+C. UI  
+D. CSS  
+
+50. Throughput is:  
+A. Time  
+B. Count  
+C. UI  
+D. CSS  
+
+---
+
+# 🧾 Answer Key
+
+1-C 2-B 3-C 4-B 5-C  
+6-C 7-C 8-B 9-B 10-B  
+
+11-B 12-B 13-C 14-B 15-C  
+16-B 17-B 18-B 19-B 20-C  
+
+21-B 22-C 23-B 24-B 25-A  
+26-A 27-A 28-B 29-A 30-B  
+
+31-B 32-C 33-A 34-B 35-A  
+36-A 37-A 38-B 39-A 40-B  
+
+41-A 42-B 43-C 44-C 45-B  
+46-A 47-B 48-B 49-B 50-B  
+
+---
+
+# 🧠 Subjective Questions with Answers
+
+---
+
+### 1. What is system design?
+System design is the process of structuring components, data, and interactions to build scalable systems.
+
+---
+
+### 2. Functional vs Non-functional?
+Functional → features  
+Non-functional → performance  
+
+---
+
+### 3. What are constraints?
+Limitations like budget, time, or tools.
+
+---
+
+### 4. What are assumptions?
+Beliefs made when requirements are incomplete.
+
+---
+
+### 5. Explain trade-offs
+Balancing decisions like speed vs cost.
+
+---
+
+### 6. What is scalability?
+Handling growth in users/data.
+
+---
+
+### 7. What is availability?
+System uptime.
+
+---
+
+### 8. What is reliability?
+Consistent correct behavior.
+
+---
+
+### 9. What is latency?
+Time to respond.
+
+---
+
+### 10. What is throughput?
+Requests handled per unit time.
+
+---
+
+### 11. What is load balancing?
+Distributing traffic across servers.
+
+---
+
+### 12. What is caching?
+Storing frequent data for fast access.
+
+---
+
+### 13. What is a queue?
+Background task processing.
+
+---
+
+### 14. Async processing?
+Work done without blocking user.
+
+---
+
+### 15. Replication?
+Copying data across servers.
+
+---
+
+### 16. Sharding?
+Splitting data across DBs.
+
+---
+
+### 17. Consistency?
+Correct and synchronized data.
+
+---
+
+### 18. Fault tolerance?
+System survives failures.
+
+---
+
+### 19. Idempotency?
+Same result on repeated calls.
+
+---
+
+### 20. Monitoring?
+Tracking system health and metrics.
+
+---
+Assignment : 
+Start with your project idea
+Come up with some lines regarding each and every point 
+
+
+
+
