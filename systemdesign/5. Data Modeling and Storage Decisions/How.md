@@ -1,9 +1,3 @@
-Great—let’s go **one level deeper** and make Module 5 truly **implementation-driven (“HOW in real engineering”)** 🔥
-
-This is the **exact thinking + steps senior engineers follow when designing data systems**.
-
----
-
 # 📘 Module 5 – HOW (Real Engineering Approach)
 
 ---
