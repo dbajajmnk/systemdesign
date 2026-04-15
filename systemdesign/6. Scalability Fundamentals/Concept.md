@@ -1,9 +1,3 @@
-Perfect 👍 — now let’s convert **Module 6 into a true “HOW to scale systems” README** (practical + real engineering + visuals).
-
-This is how **senior engineers actually scale systems in production**.
-
----
-
 # 📘 Module 6 – HOW to Scale Systems (Scalability Fundamentals)
 
 ---
