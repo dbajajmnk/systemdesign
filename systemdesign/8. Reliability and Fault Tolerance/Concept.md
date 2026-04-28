@@ -1,21 +1,3 @@
-Perfect 👍 — here is your **Module 8 – Concept.md (theory file)**
-👉 Fully aligned with **Module 5 format (WHAT / WHY / WHEN + Use Case + Q&A)**
-👉 Mermaid visuals included + VS Code ready
-
----
-
-# 📁 FILE: `Concept.md` (Module 8)
-
-````md
-%%{init: {
-  "theme": "base",
-  "themeVariables": {
-    "primaryColor": "#FFF3E0",
-    "primaryBorderColor": "#FB8C00",
-    "lineColor": "#FB8C00"
-  }
-}}%%
-
 # 📘 Module 8 – Reliability and Fault Tolerance
 
 ---

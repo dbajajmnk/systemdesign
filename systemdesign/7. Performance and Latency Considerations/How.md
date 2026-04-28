@@ -1,14 +1,3 @@
-Perfect 👍 — here is your **clean, production-ready `How.md` file for Module 7**
-
-👉 This version is:
-
-* ✅ Fully Mermaid-compatible (VS Code)
-* ✅ No syntax issues
-* ✅ Structured for teaching + implementation
-* ✅ Orange themed
-
----
-
 # 📁 FILE: `How.md` (Module 7 – FINAL)
 
 ````md

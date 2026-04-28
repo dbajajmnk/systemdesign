@@ -1,342 +1,401 @@
-Got you 👍 — I’ll give you **clean, ready-to-use MD files (NO errors, Mermaid working, VS Code compatible)**
-
-You’ll get:
-
-1. ✅ **Module 7 (Concept.md)** → theory (same as Module 5 format)
-2. ✅ **Module 7 (How.md)** → implementation (step-by-step)
+# 📘 Module 8 – Reliability and Fault Tolerance
 
 ---
 
-# 📁 FILE 1: `Concept.md` (Module 7)
+# 🎯 Why This Module Matters
 
-````md
-%%{init: {
-  "theme": "base",
-  "themeVariables": {
-    "primaryColor": "#FFF3E0",
-    "primaryBorderColor": "#FB8C00",
-    "lineColor": "#FB8C00"
-  }
-}}%%
+Distributed systems fail.
 
-# 📘 Module 7 – Performance and Latency Considerations
+Question is not:
 
----
+"Will failures happen?"
 
-# 🎯 Why This Module Is Covered in Depth
+Question is:
 
-Module 7 focuses on how systems respond under load and how quickly they serve users.
+"How does system behave when they happen?"
 
-Poor performance leads to:
-- bad user experience  
-- slow systems  
-- revenue loss  
+Most outages happen because of:
+
+❌ No retry strategy  
+❌ No isolation  
+❌ No redundancy  
+❌ Cascading failures
 
 ---
 
-# 1️⃣ Identifying Latency Sources
+# 🧠 Real-Life Mapping (Food Delivery → Reliability)
+
+| Real System Problem | Reliability Pattern |
+|---------------------|-------------------|
+| Payment Gateway Down | Retry + Fallback |
+| Delivery Service Crash | Failure Isolation |
+| Database Failure | Redundancy |
+| Recommendation Failure | Graceful Degradation |
+
+---
+
+# 1️⃣ Designing For Failures
+
+---
 
 ## ✅ WHAT
-Latency = total time to process request
 
-## 🎯 WHY
-- find bottlenecks  
-- improve performance  
-
-## ⏰ WHEN
-- system slow  
-- during testing  
-
-## 🍔 Use Case
-Order flow includes:
-- network  
-- API  
-- DB  
-- payment  
+Build assuming components fail.
 
 ---
 
-## 🖼️ Visual
+## 🎯 WHY
+
+Without this:
+
+- Single failure breaks entire flow
+
+---
+
+## ❌ Fragile System
 
 ```mermaid
 flowchart LR
-    U[User] --> N[Network]
-    N --> API[API Server]
-    API --> DB[(Database)]
-    DB --> API
-    API --> U
-````
+
+User --> OrderService
+OrderService --> PaymentService
+PaymentService --> Success
+```
+
+Payment fails → everything fails.
 
 ---
 
-# 2️⃣ Throughput vs Response Time
+## ✅ Failure-Aware System
+
+```mermaid
+flowchart LR
+
+User --> OrderService
+OrderService --> PaymentService
+PaymentService --> RetryQueue
+RetryQueue --> FallbackState
+```
+
+---
+
+## 🧠 Meaning
+
+Failures expected.
+
+System survives.
+
+---
+
+# 2️⃣ Redundancy and Graceful Degradation
+
+---
 
 ## ✅ WHAT
 
-* Throughput = requests/sec
-* Latency = time/request
+Redundancy = backups
 
-## 🎯 WHY
-
-High throughput ≠ low latency
+Graceful degradation = reduced service instead of outage
 
 ---
 
-## 🖼️ Visual
+## ❌ No Redundancy
 
 ```mermaid
 flowchart TD
-    Load --> System
-    System --> LatencyIncrease
+
+User --> Server1
+Server1 --> Crash
 ```
 
----
-
-# 3️⃣ Caching Concepts and Trade-offs
-
-## ✅ WHAT
-
-Cache = fast data storage layer
-
-## 🎯 WHY
-
-* faster response
-* reduce DB load
+System down.
 
 ---
 
-## 🖼️ Visual
+## ✅ With Redundancy
 
 ```mermaid
 flowchart LR
-    User --> Cache --> DB
+
+User --> LB
+
+LB --> Server1
+LB --> Server2
+```
+
+If one fails, traffic shifts.
+
+---
+
+## 🍔 Graceful Degradation Example
+
+Recommendations fail:
+
+Show basic restaurant listing.
+
+Ordering still works.
+
+---
+
+```mermaid
+flowchart TD
+
+App --> Recommendation
+
+Recommendation --> Failure
+
+Failure --> BasicCatalog
+
+BasicCatalog --> UserOrder
 ```
 
 ---
 
-## Trade-offs
-
-* stale data
-* invalidation complexity
+# 3️⃣ Timeout Retry Fallback
 
 ---
-
-# 4️⃣ Performance Measurement Basics
 
 ## ✅ WHAT
 
-Measure system performance
+Three protection layers:
 
-## 🎯 WHY
-
-* detect bottlenecks
-* optimize system
+- Timeout  
+- Retry  
+- Fallback
 
 ---
 
-## 🖼️ Visual
+## Retry Pattern
 
 ```mermaid
 flowchart LR
-    System --> Metrics --> Dashboard
+
+Request --> Try1
+
+Try1 --> Success
+
+Try1 --> Retry
+
+Retry --> Success
+
+Retry --> Fallback
 ```
 
 ---
 
-## 📊 Metrics
+## 🧠 Meaning
 
-* P95 latency
-* RPS
-* error rate
+Don't wait forever.
+
+Recover first.
+
+Fallback if needed.
 
 ---
 
-# 📘 Interview Questions
+## Common Rule
 
-Q: What is latency?
-A: Time taken to process request
+Retry only for transient failures.
 
-Q: What is throughput?
-A: Requests per second
+---
 
-Q: What is caching?
-A: Fast data access layer
+# 4️⃣ Failure Isolation
+
+---
+
+## ✅ WHAT
+
+One failing service should not break all services.
+
+---
+
+## ❌ Bad Design
+
+```mermaid
+flowchart LR
+
+Order --> Payment
+
+Payment --> Notification
+
+Notification --> Delivery
+```
+
+Notification fails
+
+Everything blocks.
+
+---
+
+## ✅ Failure Isolation
+
+```mermaid
+flowchart LR
+
+Order --> Payment
+
+Order --> Delivery
+
+Order --> Notification
+```
+
+Notification fails
+
+Order still completes.
+
+---
+
+## Event Isolation Example
+
+```mermaid
+flowchart LR
+
+Order --> Event
+
+Event --> Payment
+Event --> Delivery
+Event --> Notify
+```
+
+Loose coupling.
+
+Failure contained.
+
+---
+
+# 5️⃣ Circuit Breaker
+
+---
+
+## Circuit Breaker States
+
+```mermaid
+stateDiagram-v2
+
+[*] --> Closed
+
+Closed --> Open : failures
+
+Open --> HalfOpen : cooldown
+
+HalfOpen --> Closed : success
+
+HalfOpen --> Open : fail
+```
+
+---
+
+## Meaning
+
+Stop hitting broken service repeatedly.
+
+---
+
+# 6️⃣ Reliability Tools
+
+---
+
+## Infrastructure
+
+- Kubernetes Health Probes  
+- Load Balancers  
+- Multi-AZ Deployments
+
+---
+
+## Messaging
+
+- Apache Kafka  
+- RabbitMQ
+
+---
+
+## Reliability Patterns
+
+- Circuit Breakers  
+- Bulkheads  
+- Dead Letter Queues
+
+---
+
+# 🚨 Common Mistakes
+
+---
+
+❌ Infinite retries
+
+❌ No timeout
+
+❌ Shared dependency blast radius
+
+❌ Assuming services always available
+
+❌ No fallback logic
+
+---
+
+# 🧠 How To Evaluate Reliability
+
+Ask:
+
+- What fails first?
+- What happens if dependency dies?
+- Can system degrade?
+- Is blast radius limited?
+
+---
+
+# 🎯 Interview Thinking
+
+---
+
+## Q: What is fault tolerance?
+
+Continue operating despite failures.
+
+---
+
+## Q: What is graceful degradation?
+
+Reduced functionality instead of outage.
+
+---
+
+## Q: What causes cascading failures?
+
+Uncontrolled dependency failures.
+
+---
+
+## Q: How do retries become dangerous?
+
+Retry storms increase load.
+
+---
+
+# 🔟 Final Mental Model
+
+```mermaid
+flowchart LR
+
+A[Assume Failure]
+
+B[Add Redundancy]
+
+C[Isolate Failures]
+
+D[Recover Gracefully]
+
+A --> E[Reliable System]
+B --> E
+C --> E
+D --> E
+```
 
 ---
 
 # 🧠 One-Line Summary
 
-> Performance = reduce latency + optimize bottlenecks
-
-````
+Reliable systems assume failures, contain them, and continue serving users.
 
 ---
-
-# 📁 FILE 2: `How.md` (Module 7 – Practical)
-
-```md
-%%{init: {
-  "theme": "base",
-  "themeVariables": {
-    "primaryColor": "#FFF3E0",
-    "primaryBorderColor": "#FB8C00",
-    "lineColor": "#FB8C00"
-  }
-}}%%
-
-# 📘 Module 7 – HOW to Handle Performance & Latency
-
----
-
-# 🎯 Goal
-
-How to make systems fast in real-world
-
----
-
-# 1️⃣ HOW to Identify Latency
-
-## ✅ Step-by-Step
-
-Break request:
-
-1. User → Network  
-2. Network → API  
-3. API → DB  
-4. DB → API  
-5. API → User  
-
----
-
-## 🖼️ Visual
-
-```mermaid
-flowchart LR
-    U[User] --> N[Network]
-    N --> API[API]
-    API --> DB[(DB)]
-    DB --> API
-    API --> U
-````
-
----
-
-## 🧠 Rule
-
-Break latency into parts
-
----
-
-# 2️⃣ HOW to Find Bottleneck
-
-## Example
-
-| Layer | Time    |
-| ----- | ------- |
-| API   | 50ms    |
-| DB    | 500ms ❌ |
-
----
-
-## 🖼️ Visual
-
-```mermaid
-flowchart LR
-    U --> API --> DB
-    DB --> Bottleneck
-```
-
----
-
-## 🧠 Rule
-
-Optimize slowest part first
-
----
-
-# 3️⃣ HOW to Reduce Latency
-
-## Network
-
-* use CDN
-* reduce payload
-
-## API
-
-* optimize logic
-
-## DB
-
-* indexing
-
-```sql
-CREATE INDEX idx_user ON orders(user_id);
-```
-
----
-
-# 4️⃣ HOW to Use Caching
-
-## 🖼️ Visual
-
-```mermaid
-flowchart LR
-    User --> Cache --> DB
-```
-
----
-
-## Steps
-
-1. identify data
-2. cache it
-3. set expiry
-
----
-
-## Tool
-
-Redis
-
----
-
-# 5️⃣ HOW to Measure Performance
-
-## Metrics
-
-* P95
-* RPS
-* error rate
-
----
-
-## 🖼️ Visual
-
-```mermaid
-flowchart LR
-    System --> Metrics --> Dashboard
-```
-
----
-
-# 6️⃣ HOW to Improve Performance
-
-## Loop
-
-```mermaid
-flowchart TD
-    Measure --> Bottleneck --> Optimize --> Repeat
-```
-
----
-
-# 🧠 Final Rule
-
-> Measure → Fix → Repeat
-
-```
-
-
-
-
-
