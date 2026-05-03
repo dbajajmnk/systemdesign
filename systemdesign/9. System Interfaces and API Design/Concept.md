@@ -1,8 +1,3 @@
-You’re right — the **Mermaid diagrams were missing**.
-Below is the **updated Module 9 content with Mermaid diagrams** in the same structured style so you can place it into your MD file directly.
-
----
-
 # Module 9 – System Interfaces and API Design
 
 ## Why This Module Is Covered in Depth
