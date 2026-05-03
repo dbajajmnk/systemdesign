@@ -464,6 +464,4 @@ flowchart TD
 
 System interfaces and APIs are not just entry points to a system. They are control boundaries for correctness, safety, retries, concurrency, and consistency. In distributed systems, good API design ensures that business workflows remain reliable even under failures, delays, and parallel updates.
 
----
 
-If you want, I can next give you this as a **full clean `.md` file block** exactly like your previous modules, with **Mermaid init config at the top** so it renders better in VS Code.
