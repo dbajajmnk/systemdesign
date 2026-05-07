@@ -779,10 +779,3 @@ This makes your answer sound like a real architect, not just someone listing con
 
 The “how” of system interfaces and API design is about turning business workflows into safe, clear, reliable contracts. Strong API engineering means choosing consistency intentionally, protecting shared state under concurrency, making retries safe with idempotency, and exposing behavior that remains predictable even during failures.
 
----
-
-If you want, I can now give you this in a **single clean MD file format** with:
-
-* Mermaid init config on top
-* full theory + how together
-* VS Code friendly formatting
