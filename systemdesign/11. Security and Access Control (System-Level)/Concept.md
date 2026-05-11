@@ -3,8 +3,9 @@
 
 ## Why This Module Is Covered in Depth
 
-Module 11 focuses on protecting systems, data, and users at a system-design level. Security issues rarely arise from a single bug; they emerge from unclear
-trust boundaries, incorrect access control, and insecure communication between components.
+Module 11 focuses on protecting systems, data, and users at a system-design level.
+Security issues rarely arise from a single bug; they emerge from unclear trust boundaries,
+incorrect access control, and insecure communication between components.
 
 This module builds system-level security thinking so that protection is designed into the architecture, not added as a patch after incidents occur.
 
