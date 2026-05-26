@@ -2,7 +2,7 @@
 
 ## Why This Part Matters
 
-Understanding individual system design concepts is not enough. In interviews and real architecture discussions, the important skill is **how to connect all modules into one clear, structured, end-to-end design conversation**. Module 15 focuses on that full walkthrough skill: requirements, scope, components, data, scaling, failures, security, observability, and trade-offs explained in the right order. :contentReference[oaicite:0]{index=0}
+Understanding individual system design concepts is not enough. In interviews and real architecture discussions, the important skill is **how to connect all modules into one clear, structured, end-to-end design conversation**. Module 15 focuses on that full walkthrough skill: requirements, scope, components, data, scaling, failures, security, observability, and trade-offs explained in the right order. 
 
 This module explains **how to run a full system design discussion step by step** so that your thinking looks organized, mature, and interview-ready.
 
